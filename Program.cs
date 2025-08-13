@@ -47,7 +47,7 @@
                     {
                         Console.WriteLine($"Du har valgt: {film[choice - 1]}");
                         Thread.Sleep(2000);
-                        DisplaySal(choice - 1);
+                        VisSal(choice - 1);
 
                         break;  // Exit the loop once a valid choice is made
                     }
@@ -59,7 +59,7 @@
             }
 
         }
-        private static void DisplaySal(int salValg)
+        private static void VisSal(int salValg)
         {
             Console.Clear();
             for (int i = 0; i < AntalRækker; i++)
@@ -76,6 +76,31 @@
                 Console.WriteLine();
             }
 
+        }
+        static void BookPlads(int sal)
+        {
+            while (true)
+            {
+                Console.Clear();
+                VisSal(sal); //viser pladser i salen
+                Console.ResetColor(); // Reset color til default
+
+                Console.WriteLine("\nIndtast række (1-12): ");
+                int række = ValiderInput(1, AntalRækker); // -1 for 0-based index
+            }
+        }
+        static int ValiderInput(int min, int max)
+        {
+            while (true)
+            {
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out int tal))
+                {
+                    if (tal >= min && tal <= max)
+                        return tal;
+                }
+                Console.WriteLine($"Ugyldigt input. Indtast et tal mellem {min} og {max}: ");
+            }
         }
     }
 }
