@@ -29,7 +29,8 @@
         //opsæt af hoved menuen for biografen 
         static void Biomenu()
         {
-            while (true)  // Loop forever 
+            bool isrunning = true;
+            while (isrunning)  // Loop forever 
             {
                 Thread.Sleep(2000);
                 Console.Clear();
@@ -42,7 +43,7 @@
                 {
                     Console.WriteLine($"║ {i + 1}. {film[i],-28}║");
                 }
-
+                Console.WriteLine("║ tryk 42 for at afslutte        ║");
                 Console.WriteLine("╚════════════════════════════════╝");
                 Console.WriteLine();
 
@@ -55,12 +56,18 @@
                     {
                         FilmMenu(valg - 1); // Gå videre til filmens menu
                     }
+                    else if (valg == 42)
+                    {
+                        Console.WriteLine("tak for din bestilling!");
+                        isrunning = false; // Stop the loop to exit the program
+                    }
                     else
                     {
                         Console.WriteLine("Ugyldigt nummer. Prøv igen.");
                         Thread.Sleep(1500);
                     }
                 }
+
                 else
                 {
                     Console.WriteLine("Ugyldigt input. Prøv igen.");
