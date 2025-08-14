@@ -1,5 +1,6 @@
 ﻿namespace bio_opg
-{
+{// made by Mia/awde 2025-08-14
+    //yyyy-mm-dd format for date
     internal class Program
     {
         const int AntalSale = 4;
@@ -8,21 +9,27 @@
         // Declare film array here so it's accessible everywhere in the class
         static string[] film = { "F1 filmen", "Demonslayer Mugen Train", "Avatar 2", "Oppenheimer" };
         static bool[,,] biograf = new bool[AntalSale, AntalSæder, AntalRækker];
+
+        // Main method for at starte programmet og initialisere biografen  kalder Biomenu() for at vise hovedmenuen
+        //printer menuen for biografen og giver brugeren mulighed for at vælge en film hvor de kan booke en plads eller se pladserne i salen
+
+
         static void Main(string[] args)
         {
-            // Initialize the cinema with some booked seats for demonstration
+            // initialiserer biografen med nogle bookede pladser for at teste
+
             biograf[0, 7, 6] = true;
             biograf[0, 10, 6] = true;
             biograf[0, 11, 6] = true;
             biograf[0, 19, 6] = true;
-            // Call the menu function to start the program
+            // kalder Biomenu() for at vise hovedmenuen
             Biomenu();
             Console.ReadKey();
         }
-        //opsæt af hoved menuen for biografen
+        //opsæt af hoved menuen for biografen 
         static void Biomenu()
         {
-            while (true)  // Loop forever until break
+            while (true)  // Loop forever 
             {
                 Thread.Sleep(2000);
                 Console.Clear();
@@ -62,6 +69,8 @@
             }
 
         }
+        // VisSal metoden viser en oversigt over de bookede pladser i den valgte sal med rød for bookede pladser og grøn for ledige pladser
+        //viser rækken i siden og sædetummer i bunden af salen
         private static void VisSal(int salValg)
         {
             Console.Clear();
@@ -92,7 +101,8 @@
             Console.WriteLine();
            
         }
-        // Undermenu for en valgt film
+        // Undermenu for en valgt film hvor brugeren kan booke en plads eller se pladserne i salen
+        // den viser filmens navn og giver brugeren mulighed for at vælge en handling til at booke en plads eller se pladserne i salen
         static void FilmMenu(int valgtfilm)
         {
             bool finish = false;
@@ -124,6 +134,8 @@
                 }
             }
         }
+        // BookPlads metoden giver brugeren mulighed for at booke en plads i den valgte sal
+        // den beder brugeren om at vælge række og sæde, og tjekker om pladsen allerede er booket, hvis den er booket, beder den brugeren om at vælge en anden plads
         static void BookPlads(int sal)
         {
             while (true)
@@ -152,7 +164,8 @@
                 }
             }
         }
-        
+        // ValiderInput metoden tjekker om brugerens input er et gyldigt tal inden for det angivne interval
+        // hvis inputtet er ugyldigt, beder den brugeren om at indtaste et nyt tal og fortsætter indtil et gyldigt tal er indtastet
         static int ValiderInput(int min, int max)
         {
             while (true)
@@ -166,6 +179,8 @@
                 Console.WriteLine($"Ugyldigt input. Indtast et tal mellem {min} og {max}: ");
             }
         }
+        // DisplaySal metoden viser en oversigt over de bookede pladser i den valgte sal med rød for bookede pladser og grøn for ledige pladser
+        // den viser rækken i siden og sædetummer i bunden af salen, og farverne for de bookede og ledige pladser
         static void DisplaySal(int sal)
         {
             Console.Clear();
